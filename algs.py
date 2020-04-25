@@ -7,7 +7,7 @@ def ftime(f):
     def func(*args):
         start = time.time()
         a = f(*args)
-        # print(f"({f.__name__})час:", time.time() - start)
+        #print(f"({f.__name__})час:", time.time() - start)
         return a
     return func
 
@@ -53,7 +53,7 @@ def R(x, y, m=None):
         my = m
     N = min(len(x), len(y))
     R = [(x[i]-mx)*(y[i]-my)/(N-1) for i in range(N)]
-    print(time.time() - start)
+    #print(time.time() - start)
     return R
 
 @ftime

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 from algs import signal_func, autocorr, R, m, D
-
-n = 12
+import time
+n = 120
 omega = 2700
-N = 64
+N = 1000
 range_min = 0
 range_max = 1
 
@@ -23,10 +23,13 @@ m = m(x)
 D = D(x, m)
 print(f'm: {m}\nD: {D}')
 
-#Rxx = R(x[:N//2], x[N//2:])
-#plt.plot(range(N//2), Rxx, label='Rxx')
-#Rxy = R(x[:N//2], y[:N//2])
-#plt.plot(range(N//2), Rxy, label='Rxy')
+start = time.time()
+Rxx = R(x[:N//2], x[N//2:])
+print("час Rxx:",time.time() - start)
+start1 = time.time()
+Rxy = R(x[:N//2], y[:N//2])
+print("час Rxy:",time.time() - start1)
+
 
 R_taux = [autocorr(x_gen, y_gen, N, tau) for tau in range(N//2)]
 R_tauy = [autocorr(x_gen, x_gen, N, tau) for tau in range(N//2)]
